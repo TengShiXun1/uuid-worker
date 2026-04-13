@@ -1,18 +1,18 @@
 import { AutoRouter } from 'itty-router'
+
 import * as uuid from 'uuid'
 
 const router = AutoRouter()
 
-router.get('/:version', ({ params }) => {
-  const v = params.version;
-  
-  if (uuid[v]) {
-    return new Response(uuid[v]());
-  }
-  
-  if (v === 'nil') return new Response(uuid.NIL);
-  if (v === 'max') return new Response(uuid.MAX);
+const Version = ["v1", "v4", "v6", "v7", "v8"]
+
+Version.forEach((value, index) => {
+  router.get(`/${value}`, () => new Response(uuid[value]()))
 })
+
+router.get('/nil', () => new Response(uuid.NIL));
+
+router.get('/max', () => new Response(uuid.MAX));
 
 router.get('/', () => new Response(uuid.v4()));
 
