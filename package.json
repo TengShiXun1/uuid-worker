@@ -1,21 +1,23 @@
 {
-	"name": "uuid-worker",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "npx wrangler deploy",
-		"dev": "npx wrangler dev",
-		"start": "npx wrangler dev",
-		"cf-typegen": "npx wrangler types"
+  "name": "uuid-worker",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+		"deploy": "bunx wrangler deploy",
+		"dev": "bunx wrangler dev",
+		"start": "bunx wrangler dev",
+		"cf-typegen": "bunx wrangler types"
 	},
-	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "^0.8.71",
-		"@cloudflare/workers-types": "^4.20260413.1",
-		"typescript": "^5.5.2",
-		"wrangler": "^4.73.0"
-	},
-	"dependencies": {
-		"itty-router": "^5.0.23",
-		"uuid": "^13.0.0"
-	}
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "itty-router": "^5.0.23",
+    "uuid": "^14.0.0",
+    "wrangler": "^4.90.0"
+  }
 }
